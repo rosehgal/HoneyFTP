@@ -1,14 +1,11 @@
 #########################################################################################
-INFO:pyftpdlib:>>> starting FTP server on 0.0.0.0:21, pid=19309 <<<
+INFO:pyftpdlib:>>> starting FTP server on 0.0.0.0:21, pid=25939 <<<
 INFO:pyftpdlib:concurrency model: async
 INFO:pyftpdlib:masquerade (NAT) address: None
 INFO:pyftpdlib:passive ports: None
 INFO:pyftpdlib:[]@127.0.0.1 FTP session opened (connect)
-INFO:pyftpdlib:[]@127.0.0.1 USER 'user' failed login.
-INFO:pyftpdlib:[]@127.0.0.1 FTP session closed (disconnect).
-INFO:pyftpdlib:[]@127.0.0.1 FTP session opened (connect)
 INFO:pyftpdlib:[ubuntu]@127.0.0.1 USER 'ubuntu' logged in.
-INFO:pyftpdlib:[ubuntu]@127.0.0.1 STOR /home/n1sh1t/thesis/pass.txt completed=1 bytes=1054645 seconds=0.001
+INFO:pyftpdlib:[ubuntu]@127.0.0.1 STOR /home/n1sh1t/thesis/ftp-proxy-server/pass.txt completed=1 bytes=1054645 seconds=0.002
 INFO:pyftpdlib:[ubuntu]@127.0.0.1 FTP session closed (disconnect).
 INFO:pyftpdlib:received interrupt signal
 INFO:pyftpdlib:>>> shutting down FTP server (1 active socket fds) <<<
