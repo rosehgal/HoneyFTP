@@ -1,7 +1,7 @@
 import os
 import logging
 from pyftpdlib.authorizers import DummyAuthorizer
-from pyftpdlib.handlers import FTPHandler
+from handlers import FTPHandler
 from pyftpdlib.servers import FTPServer
 
 def main():
@@ -26,9 +26,6 @@ def main():
 	    
 	handler.banner = s
 	
-	#print "---->",handler.rip
-	#ip = %(remote_ip)s + '.log'
-	#open(ip,'a+')
 	f11=open('./logs/ftp.log','w')
 	f11.write("#########################################################################################\n")
 	f11.close()
