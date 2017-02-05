@@ -1,6 +1,7 @@
 import socket
 import thread
 import hashlib
+import os
 
 serversock = socket.socket()
 host = socket.gethostname();
@@ -8,7 +9,7 @@ port = 4545;
 serversock.bind(('',port));
 filename = ""
 serversock.listen(10);
-DOWNLOAD_LOCATION = "./ftp_uploads/"
+DOWNLOAD_LOCATION = os.path.dirname(os.path.realpath(__file__))+"/ftp_uploads/"
 print "Waiting for a connection....."
 
 while True:

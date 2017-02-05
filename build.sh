@@ -33,6 +33,6 @@ then
 fi
 
 mkdir -p ./file_receiver/ftp_uploads
-/bin/sh -c '/file_receiver/file_server.py &'
+/bin/sh -c 'python ./file_receiver/file_server.py > /dev/null &'
 echo "[*] All the uploads will be monitored by service running @ 4545 port"
 echo "[*] The ftp uploads will be logged in `pwd`/file_receiver/ftp_uploads/"
