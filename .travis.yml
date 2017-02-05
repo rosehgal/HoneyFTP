@@ -1,0 +1,13 @@
+sudo: required
+language: python
+python:
+  - 2.7
+  - 3.5
+service:
+  - docker
+install:
+  - docker build -t ftpserver honeyPotServices/
+  - docker run --name FTP -d -p 0.0.0.0:20:20 -p 0.0.0.0:21:21 -t ftpserver
+script:
+  - docker ps | grep -q FTP
+  - docker port FTP
