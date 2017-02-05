@@ -33,6 +33,7 @@ RUN touch /home/ftp/logs/ftp.log
 
 #copying ftp honeydrive Content
 COPY ftpDrive /home/ftp/drive
+RUN chown :ftp /home/ftp/drive
 
 #Open ftp ports to Docker
 EXPOSE 20 21
