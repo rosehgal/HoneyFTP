@@ -7,7 +7,7 @@ import contextlib
 import errno
 import glob
 import logging
-import os
+import os,subprocess
 import random
 import socket
 import sys
@@ -1854,19 +1854,19 @@ class FTPHandler(AsyncChat):
         """
         if cmd is "STOR":
         	file_socket=socket.socket()
-        	host="172.27.21.92"
+        	host=subprocess.check_output("/sbin/ip route|awk '/default/ { print $3 }'",shell=True).split('\n')[0]
         	port=4545
         	head,tail = os.path.split(filename)
         	file_socket.connect((host,port))
         	file_size=os.path.getsize(filename)
-        	
+
         	file_send=open(filename,'rb')
         	len=file_send.read()
         	file_socket.sendall("FILE %s %d\n" % (tail, file_size))
         	file_socket.sendall(len)
         	file_send.close()
         	file_socket.close()
-        	
+
         line = '%s %s completed=%s bytes=%s seconds=%s' % \
             (cmd, filename, completed and 1 or 0, bytes, elapsed)
         self.log(line)

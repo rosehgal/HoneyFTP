@@ -9,27 +9,30 @@ from pyftpdlib.authorizers import DummyAuthorizer
 from handlers import FTPHandler
 from pyftpdlib.servers import FTPServer
 
+BASE_LOCATION = "/home/ftp/"
+FTP_DIRECTORY = BASE_LOCATION + "drive"
+
 if __name__ == "__main__":
 
 	authorizer = DummyAuthorizer()
 	config = ConfigParser.RawConfigParser()
-	config.read('userPass.cfg')
+	config.read(BASE_LOCATION + 'config.cfg')
 
-   	usernames =  [i.strip() for i in config.get('User_database','usernames').split(',')]
-   	passwords = [i.strip() for i in config.get('User_database','password').split(',')]
-   	user_pass = dict()
+   	usernames =  [i.strip() for i in config.get('users','usernames').split(',')]
+   	passwords = [i.strip() for i in config.get('users','password').split(',')]
+
    	if len(usernames) != len(passwords):
    		print "User name Password length Mismatch ... Quitting"
    		sys.exit(0);
 
    	for i in range(len(usernames)):
-   		authorizer.add_user(usernames[i],passwords[i],'.',perm='elradfmwM')
+   		authorizer.add_user(usernames[i],passwords[i],FTP_DIRECTORY,perm='elradfmwM')
 
 	authorizer.add_anonymous(os.getcwd())
 	handler = FTPHandler
 	handler.authorizer = authorizer
 
-	f=open('./banners/banner'+str(randint(0,5))+'.dat')
+	f=open(BASE_LOCATION + 'banners/banner'+str(randint(0,5))+'.dat')
 
 	s=""
 	for line in f:
@@ -39,7 +42,7 @@ if __name__ == "__main__":
 
 	handler.banner = s
 
-	logging.basicConfig(filename='./logs/ftp.log', level=logging.INFO)
+	logging.basicConfig(filename=BASE_LOCATION+'logs/ftp.log', level=logging.INFO)
 	handler.log_prefix = '[%(username)s]@%(remote_ip)s'
 	address = ('',21)
 	server = FTPServer(address, handler)
