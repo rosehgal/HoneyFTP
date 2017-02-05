@@ -1,4 +1,0 @@
-INFO:pyftpdlib:[]@127.0.0.1 FTP session opened (connect)
-INFO:pyftpdlib:[user]@127.0.0.1 USER 'user' logged in.
-INFO:pyftpdlib:[user]@127.0.0.1 RETR /home/n1sh1t/thesis/banner.dat completed=1 bytes=1047 seconds=0.0
-INFO:pyftpdlib:[user]@127.0.0.1 FTP session closed (disconnect).
