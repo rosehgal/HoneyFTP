@@ -7,8 +7,10 @@ RUN apt-get update && apt-get install python2.7 -y
 RUN apt-get install aptitude -y
 
 #aptitude will install the dependencies related to python-pip
-RUN aptitude install python-pip -y
-
+RUN apt-get -y install curl
+RUN curl "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -o "get-pip.py"
+RUN apt-get install python tcpdump -y
+RUN python2 get-pip.py
 RUN pip install pyftpdlib
 
 #creating the directory for ftp user
